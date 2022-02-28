@@ -1,14 +1,12 @@
 package com.example.android.covidtracerapp;
-import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-import java.util.ArrayList;
 import java.util.List;
-
 public class CovidAdapter extends ArrayAdapter<CovidDetail>
 {
     CovidAdapter(Context context, List<CovidDetail> covidDetails)
@@ -25,6 +23,8 @@ public class CovidAdapter extends ArrayAdapter<CovidDetail>
         CovidDetail covidRecord=getItem(position);
         TextView stateText=(TextView)listView.findViewById(R.id.stateTextViewId);
         stateText.setText(covidRecord.getState()+"");
-return listView;
+
+        return listView;
     }
+
 }
