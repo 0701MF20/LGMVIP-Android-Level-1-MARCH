@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/edit_name"
+    android:layout_width="300dp"
+    android:layout_height="250dp"
+    android:layout_gravity="center"
+    android:orientation="horizontal"  >
+<LinearLayout
+    android:layout_width="110dp"
+    android:layout_height="180dp"
+    android:orientation="vertical"
+    android:layout_margin="15dp">
+    <TextView
+        android:text="ACTIVE"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+android:layout_gravity="center"
+        android:layout_margin="10dp"
+
+        />
+    <TextView
+        android:text="CONFIRMED"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+/>
+    <TextView
+        android:text="DECEASED"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+
+        android:layout_gravity="center"
+        android:layout_margin="16dp"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:text="RECOVERED"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>
+
+    <LinearLayout
+        android:layout_width="110dp"
+        android:layout_height="180dp"
+        android:orientation="vertical"
+        android:layout_margin="15dp">
+        <TextView
+            android:id="@+id/activeTextView"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:layout_width="wrap_content"
+            android:layout_margin="10dp"
+
+            android:layout_gravity="center"
+
+            android:layout_height="wrap_content"
+            />
+        <TextView
+            android:id="@+id/confirmedTextView"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:layout_width="wrap_content"
+            android:layout_margin="10dp"
+
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/deceasedTextView"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="16dp"
+
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/recoveredTextView"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+</LinearLayout>
