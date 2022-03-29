@@ -19,7 +19,8 @@ public class CovidAdapter extends ArrayAdapter<CovidDetail>
         {
             listView= LayoutInflater.from(getContext()).inflate(R.layout.testing,parent,false);
         }
-        CovidDetail covidRecord=getItem(position);
+       CovidDetail covidRecord=getItem(position);
+     //   Model covidRecord=getItem(position);
         TextView stateText=(TextView)listView.findViewById(R.id.stateTextViewId);
         stateText.setText(covidRecord.getState()+"");
 
