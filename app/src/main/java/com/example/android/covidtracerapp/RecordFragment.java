@@ -22,8 +22,6 @@ public class RecordFragment extends DialogFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-    //    Log.e("MainActivity","Active is:"+MainActivity.active);
-
         confirmTextView=view.findViewById(R.id.confirmedTextView);
         deceasedTextView=view.findViewById(R.id.deceasedTextView);
         activeTextView=view.findViewById(R.id.activeTextView);

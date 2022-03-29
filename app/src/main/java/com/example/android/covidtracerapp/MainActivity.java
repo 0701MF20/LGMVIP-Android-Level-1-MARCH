@@ -23,22 +23,17 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 public class MainActivity extends AppCompatActivity {
-    //TextView emptyTextView;
     private static final String LOG = MainActivity.class.getSimpleName();
     public static final String COVID_REQUEST_URL = "https://data.covid19india.org/state_district_wise.json";
     private ListView CovidListView;
-    List<CovidDetail> covidDetailList;
+    List<Model> covidDetailList;
     ArrayList<String> covidCity= new ArrayList<String>();
-    ArrayList<String> CityofState= new ArrayList<String>();
-    //  String[] covidCityList;
     static String responses;
     public static int active;
     public static int confirmed;
     public static int deceased;
     public static int recovered;
     CovidAdapter adapter;
-    CovidAdapter adapter2;
-    String[] array;
     JSONObject jsonObject;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,16 +46,13 @@ public class MainActivity extends AppCompatActivity {
         CovidListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                CovidDetail adapts=adapter.getItem(position);
+                Model adapts=adapter.getItem(position);
                String state=adapts.getState();
                 Toast.makeText(getApplicationContext(),"State is:"+state,Toast.LENGTH_SHORT).show();
-         //      Toast.makeText(getApplicationContext(),"State is:"+state,Toast.LENGTH_SHORT).show();
                 AlertDialog.Builder cityDialog = new AlertDialog.Builder(MainActivity.this);
                 cityDialog.setIcon(R.drawable.ic_baseline_arrow_upward_24);
-              //  CharSequence[] charSequence =
                 cityDialog.setTitle("Pick City");
 
-              //  cityDialog.setSingleChoiceItems()
                 try {
                     JSONObject object = jsonObject.getJSONObject(state);
                     JSONObject districtData = object.getJSONObject("districtData");
@@ -84,12 +76,8 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int position) {
                         int selectedPosition = ((AlertDialog) dialogInterface).getListView().getCheckedItemPosition();
-                //        adapter2 = new CovidAdapter(getApplicationContext(), covidDetailList1);
-         //  String city=CityofState.get(selectedPosition);
                    String city=str[position];
-                        // Intent intent=new Intent(getApplicationContext(),DetailActivity.class);
-                  //  String city=adapter.getItem(position).getState();
-           //Toast.makeText(getApplicationContext(),"City is:"+city,Toast.LENGTH_SHORT).show();
+
                         try {
                             JSONObject object = jsonObject.getJSONObject(state);
                             JSONObject districtData = object.getJSONObject("districtData");
@@ -98,12 +86,6 @@ public class MainActivity extends AppCompatActivity {
                                confirmed=cityFinal.getInt("confirmed");
                               deceased=cityFinal.getInt("deceased");
                                 recovered=cityFinal.getInt("recovered");
-//                                Intent in=new Intent(getApplicationContext(),RecordFragment.class);
-//                                in.putExtra("ACTIVE",active);
-//                            in.putExtra("ACTIVE",confirmed);
-//                            in.putExtra("ACTIVE",deceased);
-//                            in.putExtra("ACTIVE",recovered);
-//                            startActivity(in);
                         }
                         catch (JSONException e) {
                         }
@@ -112,13 +94,6 @@ public class MainActivity extends AppCompatActivity {
                         dialogInterface.dismiss();
                     }
                 });
-//                cityDialog.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialogInterface, int i) {
-//
-//                    }
-//                });
-
                 AlertDialog mDialog = cityDialog.create();
                 mDialog.show();
             }
@@ -142,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
                             do {
                                 String key = keys.next();
                                 Log.e("MainActivity", "States: " + key);
-                                covidDetailList.add(new CovidDetail(key));
+                                covidDetailList.add(new Model(key));
 
                             } while (keys.hasNext());
                            adapter = new CovidAdapter(getApplicationContext(), covidDetailList);
@@ -161,60 +136,4 @@ public class MainActivity extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
     }
-
-   /* private String[]  DialogOption(String availResponse, String selectedState) {
-        int count = 0;
-        String[] character;
-        try {
-            JSONObject jsonObjects = new JSONObject(availResponse);
-            JSONObject object = jsonObjects.getJSONObject(selectedState);
-            JSONObject districtData = object.getJSONObject("districtData");
-            Iterator<String> keysCity = districtData.keys();
-            while (keysCity.hasNext()) {
-                count++;
-            }
-            character = new String[count];
-            int position = 0;
-            while (keysCity.hasNext()) {
-                String chars;
-                chars = keysCity.next();
-                character[position] = chars;
-                position++;
-                //covidCity.add(keyIndividualCity);
-            }
-            return character;
-
-
-        } catch (JSONException e) {
-            Log.e("MainActivity", "JSON Exception", e);
-            return null;
-        }
-        // return covidCity;
-    /*try
-    {
-        //JSONObject jsonObject=new JSONObject(availResponse);
-        Iterator<String> keys=jsonObject.keys();
-        do {
-            String key=keys.next();
-            JSONObject JsonObject1=new JSONObject(key);
-            JSONObject jsonObject2=JsonObject1.getJSONObject("districtData");
-            Iterator<String> keysCity=jsonObject2.keys();
-                                do {
-                                  String key1=keysCity.next();
-                                    covidCityList.add(new CovidDetail(key1));
-                                }while(keysCity.hasNext());
-//                                JSONObject jsonObject3=jsonObject2.getJSONObject("Unassigned");
-//                                active=jsonObject3.getInt("active");
-//                                confirmed=jsonObject3.getInt("confirmed");
-//                                deceased=jsonObject3.getInt("deceased");
-//                                recovered=jsonObject3.getInt("recovered");
-
-        }while (keys.hasNext());
-        //CovidAdapter adapter=new CovidAdapter(getApplicationContext(),covidDetailList);
-        //CovidListView.setAdapter(adapter);
-    } catch (JSONException e) {
-        Log.e("MainActivity","JSON Exception",e);
-    }*/
-
-    //}
 }

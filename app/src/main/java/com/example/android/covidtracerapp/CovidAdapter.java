@@ -6,9 +6,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import java.util.List;
-public class CovidAdapter extends ArrayAdapter<CovidDetail>
+public class CovidAdapter extends ArrayAdapter<Model>
 {
-    CovidAdapter(Context context, List<CovidDetail> covidDetails)
+    CovidAdapter(Context context, List<Model> covidDetails)
     {
         super(context,0, covidDetails);
     }
@@ -19,8 +19,7 @@ public class CovidAdapter extends ArrayAdapter<CovidDetail>
         {
             listView= LayoutInflater.from(getContext()).inflate(R.layout.testing,parent,false);
         }
-       CovidDetail covidRecord=getItem(position);
-     //   Model covidRecord=getItem(position);
+        Model covidRecord=getItem(position);
         TextView stateText=(TextView)listView.findViewById(R.id.stateTextViewId);
         stateText.setText(covidRecord.getState()+"");
 
